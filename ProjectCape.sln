@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCape", "ProjectCape\ProjectCape.csproj", "{027A5148-2122-4EE0-8EA5-14283082558C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HonasGame", "HonasGame\HonasGame\HonasGame.csproj", "{82E08240-9ADB-44D5-BDDC-5BA35FDEFA2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{027A5148-2122-4EE0-8EA5-14283082558C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{027A5148-2122-4EE0-8EA5-14283082558C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{027A5148-2122-4EE0-8EA5-14283082558C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{027A5148-2122-4EE0-8EA5-14283082558C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82E08240-9ADB-44D5-BDDC-5BA35FDEFA2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82E08240-9ADB-44D5-BDDC-5BA35FDEFA2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82E08240-9ADB-44D5-BDDC-5BA35FDEFA2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82E08240-9ADB-44D5-BDDC-5BA35FDEFA2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C557A571-18ED-4F47-8D03-F65793D68DF2}
+	EndGlobalSection
+EndGlobal
