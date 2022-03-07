@@ -1,0 +1,127 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "rooms/room_0_0.tmx",
+    "expandedProjectPaths": [
+        "tilesets/entities",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Tilesets",
+        "objects",
+        "tilesets",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps",
+        "rooms",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Templates"
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps/Map01.json": {
+            "scale": 16,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 29.625,
+                "y": 292.25
+            }
+        },
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps/Map01.tmx": {
+            "scale": 5.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 147.27272727272728,
+                "y": 268.0909090909091
+            }
+        },
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Tilesets/GrassTileset.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 8
+        },
+        "F:/cis580/Sandbox/Sandbox/Content/Tiled/Map1.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 187,
+                "y": 145
+            }
+        },
+        "F:/cis580/Sandbox/Sandbox/Content/Tiled/Tilesets/MedievalGrass.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "F:/cis580/Tiled/Medieval.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "F:/cis580/Tiled/Test.tmx": {
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 250,
+                "y": 169.5
+            }
+        },
+        "F:/cis580/Tiled/TestTileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 16
+        },
+        "F:/cis580/Tiled/untitled.tmx": {
+            "scale": 4,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 79.5,
+                "y": 97.25
+            }
+        },
+        "rooms/room_0_0.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 389.33333333333326,
+                "y": 417.33333333333326
+            }
+        },
+        "tilesets/entities.json": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 8
+        },
+        "tilesets/tilesetGrass.json": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 8
+        }
+    },
+    "last.exportedFilePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/rooms",
+    "last.imagePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/tilesets/entities",
+    "last.objectTemplatePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/objects",
+    "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
+    "map.height": 30,
+    "map.lastUsedExportFilter": "JSON map files (*.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 100,
+    "openFiles": [
+        "tilesets/tilesetGrass.json",
+        "rooms/room_0_0.tmx"
+    ],
+    "project": "ProjectCape.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "tilesets/tilesetGrass.json",
+        "rooms/room_0_0.tmx",
+        "tilesets/entities.json",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps/Map01.tmx",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps/Map01.json",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Tilesets/GrassTileset.json",
+        "F:/cis580/Sandbox/Sandbox/Content/Tiled/Tilesets/MedievalGrass.tsx",
+        "F:/cis580/Sandbox/Sandbox/Content/Tiled/Map1.tmx",
+        "F:/cis580/Tiled/TestTileset.tsx",
+        "F:/cis580/Tiled/untitled.tmx"
+    ],
+    "tileset.lastUsedFormat": "json",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    },
+    "tileset.type": 1
+}
