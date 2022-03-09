@@ -22,7 +22,7 @@ namespace ProjectCape.Entities.Enemies
         {
             new Transform2D(this);
             _renderer = new SpriteRenderer(this) { Sprite = AssetLibrary.GetAsset<Sprite>("sprOrc"), Animation = "walk" };
-            _collider = new Collider2D(this) { Shape = new BoundingRectangle(16, 16) { Offset = new Vector2(0, 2) }, Transform = GetComponent<Transform2D>(), Tag = Globals.TAG_MOVE_ENEMY | Globals.TAG_ENEMY };
+            _collider = new Collider2D(this) { Shape = new BoundingRectangle(16, 16) { Offset = new Vector2(0, 2) }, Transform = GetComponent<Transform2D>(), Tag = Globals.TAG_MOVE_ENEMY };
             _mover = new Mover2D(this);
             _velocity = new Velocity2D();
             _widthDiv2 = _renderer.Sprite.Animations["walk"].Frames[0].Width / 2.0f;

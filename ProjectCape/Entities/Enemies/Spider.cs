@@ -37,9 +37,10 @@ namespace ProjectCape.Entities.Enemies
             Vector2 newVel = _velocity.CalculateVelocity(gameTime);
 
             if(_mover.MoveX(newVel.X, Globals.TAG_SOLID)) _velocity.X *= -1;
-            _mover.MoveY(newVel.Y, Globals.TAG_SOLID);
+            if(_velocity.Y < 0.0f) _mover.MoveY(newVel.Y, Globals.TAG_SOLID | Globals.TAG_PLAYER);
+            else _mover.MoveY(newVel.Y, Globals.TAG_SOLID);
 
-            if(_collider.CollidesWith(Globals.TAG_SOLID, Vector2.UnitY, out Entity e))
+            if (_collider.CollidesWith(Globals.TAG_SOLID, Vector2.UnitY, out Entity e))
             {
                 _velocity.Set(Vector2.Zero);
             }

@@ -5,12 +5,12 @@
     },
     "activeFile": "rooms/room_0_0.tmx",
     "expandedProjectPaths": [
-        "tilesets/entities",
+        "rooms",
         "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Tilesets",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps",
         "objects",
         "tilesets",
-        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps",
-        "rooms",
+        "tilesets/entities",
         "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Templates"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -72,11 +72,11 @@
             }
         },
         "rooms/room_0_0.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 3,
+            "scale": 2,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 389.33333333333326,
-                "y": 417.33333333333326
+                "x": 260.5,
+                "y": 428
             }
         },
         "tilesets/entities.json": {

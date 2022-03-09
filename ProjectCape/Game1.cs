@@ -9,7 +9,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectCape.Entities;
 using ProjectCape.Entities.Enemies;
+using ProjectCape.Entities.Environment;
 using ProjectCape.Entities.Player;
+using ProjectCape.Particles;
 
 namespace ProjectCape
 {
@@ -17,6 +19,7 @@ namespace ProjectCape
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Fireworks _fireworks;
 
         public Game1()
         {
@@ -49,6 +52,7 @@ namespace ProjectCape
             AssetLibrary.AddAsset("mountains", Content.Load<Texture2D>("sprites/bg/mountains"));
             AssetLibrary.AddAsset("bushes", Content.Load<Texture2D>("sprites/bg/bushes"));
             AssetLibrary.AddAsset("sky", Content.Load<Texture2D>("sprites/bg/Sky"));
+            AssetLibrary.AddAsset("jewel", Content.Load<Texture2D>("sprites/environment/Jewel"));
             AssetLibrary.AddAsset("tileGrass", Content.Load<Texture2D>("maps/tilesets/tileGrass"));
 
             // Tilesets
@@ -71,6 +75,10 @@ namespace ProjectCape
             sprite.Animations.Add("walk", SpriteAnimation.FromSpritesheet(3, 0.1, 0, 0, 16, 18));
             AssetLibrary.AddAsset("sprOrc", sprite);
 
+            sprite = new Sprite(AssetLibrary.GetAsset<Texture2D>("jewel"));
+            sprite.Animations.Add("default", SpriteAnimation.FromSpritesheet(1, 0.0, 0, 0, 16, 16));
+            AssetLibrary.AddAsset("sprJewel", sprite);
+
             TiledManager.AddSpawnerDefinition("Player", obj => 
                 {
                     var player = new Player();
@@ -90,9 +98,14 @@ namespace ProjectCape
                 orc.GetComponent<SpriteRenderer>().SpriteEffects = obj.FlippedHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
                 return orc;
             });
+
             TiledManager.AddSpawnerDefinition("Collision", obj => { return new CollisionBox(obj.X, obj.Y, obj.Width, obj.Height); });
+            TiledManager.AddSpawnerDefinition("Jewel", obj => { return new Jewel(obj.X, obj.Y); });
 
             TiledManager.Goto(AssetLibrary.GetAsset<TiledMap>("room_0_0"));
+
+            _fireworks = new Fireworks(5);
+            Scene.AddParticleSystem(_fireworks);
         }
 
         protected override void Update(GameTime gameTime)
@@ -110,6 +123,12 @@ namespace ProjectCape
 
             Camera.Position += 2 * Vector2.UnitY;
 
+            if(Input.IsKeyPressed(Keys.Enter))
+            {
+                var player = Scene.GetEntity<Player>();
+                if (player != null) _fireworks.PlaceFirework(player.GetComponent<Transform2D>().Position);
+            }
+
             base.Update(gameTime);
         }
 
@@ -118,10 +137,7 @@ namespace ProjectCape
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            _spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Camera.GetMatrix(new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight)));
-            Scene.Draw(gameTime, _spriteBatch);
-            _spriteBatch.End();
-
+            Scene.Draw(gameTime, _spriteBatch, new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight));
 
             base.Draw(gameTime);
         }

@@ -8,8 +8,11 @@ namespace ProjectCape
     {
         public static Random Random { get; private set; } = new Random();
 
-        public const int TAG_SOLID          = 1;
-        public const int TAG_ENEMY          = 2;
-        public const int TAG_MOVE_ENEMY     = 4;
+        public const uint TAG_SOLID         = 1;
+        public const uint TAG_ENEMY         = 2;
+        public const uint TAG_MOVE          = 4;
+        public const uint TAG_MOVE_ENEMY    = TAG_ENEMY | TAG_MOVE;
+        public const uint TAG_JEWEL         = 8;
+        public const uint TAG_PLAYER        = 16;
     }
 }
