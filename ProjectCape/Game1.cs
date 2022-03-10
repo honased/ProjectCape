@@ -19,7 +19,6 @@ namespace ProjectCape
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Fireworks _fireworks;
 
         public Game1()
         {
@@ -52,6 +51,7 @@ namespace ProjectCape
             AssetLibrary.AddAsset("mountains", Content.Load<Texture2D>("sprites/bg/mountains"));
             AssetLibrary.AddAsset("bushes", Content.Load<Texture2D>("sprites/bg/bushes"));
             AssetLibrary.AddAsset("sky", Content.Load<Texture2D>("sprites/bg/Sky"));
+            AssetLibrary.AddAsset("circle", Content.Load<Texture2D>("sprites/particles/circle"));
             AssetLibrary.AddAsset("jewel", Content.Load<Texture2D>("sprites/environment/Jewel"));
             AssetLibrary.AddAsset("tileGrass", Content.Load<Texture2D>("maps/tilesets/tileGrass"));
 
@@ -104,8 +104,7 @@ namespace ProjectCape
 
             TiledManager.Goto(AssetLibrary.GetAsset<TiledMap>("room_0_0"));
 
-            _fireworks = new Fireworks(5);
-            Scene.AddParticleSystem(_fireworks);
+            Scene.AddParticleSystem(new Dust(5));
         }
 
         protected override void Update(GameTime gameTime)
@@ -122,12 +121,6 @@ namespace ProjectCape
             Scene.Update(gameTime);
 
             Camera.Position += 2 * Vector2.UnitY;
-
-            if(Input.IsKeyPressed(Keys.Enter))
-            {
-                var player = Scene.GetEntity<Player>();
-                if (player != null) _fireworks.PlaceFirework(player.GetComponent<Transform2D>().Position);
-            }
 
             base.Update(gameTime);
         }

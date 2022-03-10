@@ -7,6 +7,7 @@ using HonasGame.Helper;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ProjectCape.Particles;
 using System;
 
 namespace ProjectCape.Entities.Player
@@ -105,6 +106,11 @@ namespace ProjectCape.Entities.Player
                     _floatTimer -= t;
                     _velocity.Y = 0.0f;
                 }
+            }
+
+            if(Input.IsKeyPressed(Keys.Enter))
+            {
+                Scene.GetParticleSystem<Dust>().PlaceFirework(new Vector2((_collider.Shape.Left + _collider.Shape.Right) / 2.0f, _collider.Shape.Bottom));
             }
 
             Vector2 newVel = _velocity.CalculateVelocity(gameTime);

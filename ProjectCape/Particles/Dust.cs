@@ -8,26 +8,13 @@ using System.Text;
 
 namespace ProjectCape.Particles
 {
-    public class Fireworks : ParticleSystem
+    public class Dust : ParticleSystem
     {
-        Color[] colors = new Color[]
-        {
-            Color.Fuchsia,
-            Color.Red,
-            Color.Crimson,
-            Color.CadetBlue,
-            Color.Aqua,
-            Color.HotPink,
-            Color.LimeGreen
-        };
-
-        Color color;
-
-        public Fireworks(int maxExplosions) : base(maxExplosions * 25) { }
+        public Dust(int maxDust) : base(maxDust * 25) { }
 
         protected override void InitializeConstants()
         {
-            textureFilename = "jewel";
+            textureFilename = "circle";
 
             minNumParticles = 20;
             maxNumParticles = 25;
@@ -38,7 +25,7 @@ namespace ProjectCape.Particles
 
         protected override void InitializeParticle(ref Particle p, Vector2 where)
         {
-            var velocity = RandomHelper.NextDir() * RandomHelper.NextFloat(40, 200);
+            var velocity = RandomHelper.NextDir() * RandomHelper.NextFloat(5, 20);
 
             var lifetime = RandomHelper.NextFloat(0.5f, 1.0f);
 
@@ -48,8 +35,7 @@ namespace ProjectCape.Particles
 
             var angularVelocity = RandomHelper.NextFloat(-MathHelper.PiOver4, MathHelper.PiOver4);
 
-            color = colors[RandomHelper.NextInt(colors.Length)];
-            p.Initialize(where, velocity, acceleration, color, lifetime: lifetime, rotation: rotation, angularVelocity: angularVelocity, scale: .1f);
+            p.Initialize(where, velocity, acceleration, Color.Brown, lifetime: lifetime, rotation: rotation, angularVelocity: angularVelocity, scale: .1f);
         }
 
         protected override void UpdateParticle(ref Particle particle, float dt)
