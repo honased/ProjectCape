@@ -8,18 +8,19 @@ using System.Text;
 
 namespace ProjectCape.Particles
 {
-    public class Dust : ParticleSystem
+    public class Blood : ParticleSystem
     {
-        public Dust() : base(50) { }
+        public Blood() : base(50) { }
 
         private const int STARTING_ALPHA = 255;
+        private Color _color;
 
         protected override void InitializeConstants()
         {
             textureFilename = "square";
 
-            minNumParticles = 1;
-            maxNumParticles = 2;
+            minNumParticles = 10;
+            maxNumParticles = 20;
 
             blendState = BlendState.AlphaBlend;
             DrawOrder = AlphaBlendDrawOrder;
@@ -27,17 +28,17 @@ namespace ProjectCape.Particles
 
         protected override void InitializeParticle(ref Particle p, Vector2 where)
         {
-            var velocity = RandomHelper.NextDir() * RandomHelper.NextFloat(5, 20);
+            var velocity = RandomHelper.NextDir(0, MathHelper.Pi) * new Vector2(RandomHelper.NextFloat(-15, -50), RandomHelper.NextFloat(-100, -200));
 
             var lifetime = RandomHelper.NextFloat(0.5f, 1.0f);
 
-            var acceleration = -velocity / lifetime;
+            var acceleration = new Vector2(0.0f, 500.0f);
 
             var rotation = RandomHelper.NextFloat(0, MathHelper.TwoPi);
 
             var angularVelocity = RandomHelper.NextFloat(-MathHelper.PiOver4, MathHelper.PiOver4);
 
-            p.Initialize(where, velocity, acceleration, Color.FromNonPremultiplied(138, 72, 54, STARTING_ALPHA), lifetime: lifetime, rotation: rotation, angularVelocity: angularVelocity, scale: .1f);
+            p.Initialize(where, velocity, acceleration, _color, lifetime: lifetime, rotation: rotation, angularVelocity: angularVelocity, scale: .1f);
         }
 
         protected override void UpdateParticle(ref Particle particle, float dt)
@@ -47,11 +48,12 @@ namespace ProjectCape.Particles
             float normalizedLifetime = particle.TimeSinceStart / particle.Lifetime;
 
             particle.Scale = .1f + .2f * normalizedLifetime;
-            particle.Color = Color.FromNonPremultiplied(138, 72, 54, STARTING_ALPHA - (int)(normalizedLifetime * STARTING_ALPHA));
+            particle.Color = Color.FromNonPremultiplied(particle.OriginalColor.R, particle.OriginalColor.G, particle.OriginalColor.B, STARTING_ALPHA - (int)(normalizedLifetime * STARTING_ALPHA));
         }
 
-        public void PlaceDust(Vector2 where)
+        public void PlaceBlood(Vector2 where, Color color)
         {
+            _color = color;
             AddParticles(where);
         }
     }

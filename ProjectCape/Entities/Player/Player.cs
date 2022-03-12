@@ -21,26 +21,21 @@ namespace ProjectCape.Entities.Player
         private Mover2D _mover;
         private double _jmpTimer;
         private double _coyoteTimer;
-        private double _floatTimer;
-        private bool _canFloat;
 
         private const float GRAVITY = 1000.0f;
         private const float JUMP_SPEED = 200.0f;
         private const double JUMP_TIMER = 0.15;
         private const double COYOTE_TIME = 0.2;
-        private const double FLOAT_TIME = 0.5;
 
-        public Player()
+        public Player(float x, float y)
         {
-            _transform = new Transform2D(this); // position
+            _transform = new Transform2D(this) { Position = new Vector2(x, y) }; // position
             _collider = new Collider2D(this) { Shape = new BoundingRectangle(10, 14) { Offset = new Vector2(3, 4) }, Transform = _transform, Tag = Globals.TAG_PLAYER };
             _renderer = new SpriteRenderer(this) { Sprite = AssetLibrary.GetAsset<Sprite>("sprPlayer"), Animation = "idle" };
             _mover = new Mover2D(this);
             _velocity = new Velocity2D();
             _jmpTimer = 0.0;
             _coyoteTimer = 0.0;
-            _floatTimer = 0.0;
-            _canFloat = false;
         }
 
         public override void Update(GameTime gameTime)
@@ -49,21 +44,20 @@ namespace ProjectCape.Entities.Player
             bool onGround = false;
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            float newX = ((Input.IsKeyDown(Keys.Right) || Input.IsKeyDown(Keys.D)) ?  1 : 0) +
-                       ((Input.IsKeyDown(Keys.Left)  || Input.IsKeyDown(Keys.A)) ? -1 : 0);
+            float newX = ((Input.IsKeyDown(Keys.Right) || Input.IsKeyDown(Keys.D) || Input.CheckAnalogDirection(true, true, 1) || Input.IsButtonDown(Buttons.DPadRight)) ?  1 : 0) +
+                       ((Input.IsKeyDown(Keys.Left)  || Input.IsKeyDown(Keys.A) || Input.CheckAnalogDirection(true, true, -1) || Input.IsButtonDown(Buttons.DPadLeft)) ? -1 : 0);
 
-            _velocity.X = HonasMathHelper.LerpDelta(_velocity.X, newX * (Input.IsKeyDown(Keys.LeftShift) ? 120.0f : 60.0f), 0.2f, gameTime);
+            _velocity.X = HonasMathHelper.LerpDelta(_velocity.X, newX * ((Input.IsKeyDown(Keys.LeftShift) || Input.IsButtonDown(Buttons.RightTrigger)) ? 120.0f : 60.0f), 0.2f, gameTime);
             _velocity.Y += GRAVITY * t;
 
-            if (_collider.CollidesWith(Globals.TAG_SOLID, Vector2.UnitY, out e))
+            if (_collider.CollidesWith(Globals.TAG_SOLID | Globals.TAG_ONE_WAY, Vector2.UnitY, out e))
             {
                 onGround = true;
-                _floatTimer = 0.0;
             }
 
             if (_jmpTimer > 0.0)
             {
-                if (Input.IsKeyDown(Keys.Space))
+                if (Input.IsKeyDown(Keys.Space) || Input.IsButtonDown(Buttons.A))
                 {
                     _velocity.Y = -JUMP_SPEED;
                     _jmpTimer -= gameTime.ElapsedGameTime.TotalSeconds;
@@ -78,75 +72,72 @@ namespace ProjectCape.Entities.Player
             if(onGround)
             {
                 _coyoteTimer = COYOTE_TIME;
-                _canFloat = false;
             }
             else if(_coyoteTimer > 0.0)
             {
                 _coyoteTimer -= gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            if (Input.IsKeyPressed(Keys.Space) && _coyoteTimer > 0.0)
+            if ((Input.IsKeyPressed(Keys.Space) || Input.IsButtonPressed(Buttons.A)) && _coyoteTimer > 0.0)
             {
                 _velocity.Y = -JUMP_SPEED;
                 _jmpTimer = JUMP_TIMER;
                 _coyoteTimer = 0.0;
-                _canFloat = true;
-            }
-
-            if (Input.IsKeyPressed(Keys.Space) && !onGround && _canFloat && _jmpTimer <= 0.0)
-            {
-                _floatTimer = FLOAT_TIME;
-                _canFloat = false;
-            }
-
-            if(_floatTimer > 0.0)
-            {
-                if (Input.IsKeyDown(Keys.Space))
-                {
-                    _floatTimer -= t;
-                    _velocity.Y = 0.0f;
-                }
-            }
-
-            if(Input.IsKeyPressed(Keys.Enter))
-            {
-                Scene.GetParticleSystem<Dust>().PlaceFirework(new Vector2((_collider.Shape.Left + _collider.Shape.Right) / 2.0f, _collider.Shape.Bottom));
+                //Scene.GetParticleSystem<Blood>().PlaceBlood(_transform.Position);
             }
 
             Vector2 newVel = _velocity.CalculateVelocity(gameTime);
 
             _mover.MoveX(newVel.X, Globals.TAG_SOLID);
-            if (_mover.MoveY(newVel.Y, Globals.TAG_SOLID)) { newVel.Y = 0.0f; _velocity.Y = 0.0f; };
+            if (_mover.MoveY(newVel.Y, Globals.TAG_SOLID, oneWayTag: Globals.TAG_ONE_WAY))
+            { 
+                // Place dust particle impact
+                if(_velocity.Y > 360.0f)
+                {
+                    Scene.GetParticleSystem<Blood>().PlaceBlood(new Vector2((_collider.Shape.Right + _collider.Shape.Left) / 2.0f, _collider.Shape.Bottom), Color.FromNonPremultiplied(138, 72, 54, 255));
+                }
+
+                newVel.Y = 0.0f; 
+                _velocity.Y = 0.0f; 
+                _jmpTimer = 0.0; 
+            }
 
             // Check collision with enemy
             e = _collider.CollidesWithAnything(out uint collideTag);
             if ((collideTag & Globals.TAG_ENEMY) > 0)
             {
-                if (_collider.Shape.Bottom < e.GetComponent<Collider2D>().Shape.Top + 2.0f || newVel.Y > 0.0f)
+                if(e.GetComponent<Collider2D>(out var eCollider))
                 {
-                    e.Destroy();
-                    _velocity.Y = -JUMP_SPEED;
-                    _jmpTimer = JUMP_TIMER;
-                    _coyoteTimer = 0.0;
-                    _mover.MoveY(e.GetComponent<Collider2D>().Shape.Top - _collider.Shape.Bottom, Globals.TAG_SOLID);
-                    _canFloat = true;
-                }
-                else
-                {
-                    Destroy();
-                    foreach(Entity en in Scene.GetEntities())
+                    if (_collider.Shape.Bottom < eCollider.Shape.Top + 2.0f || newVel.Y > 0.0f)
                     {
-                        if (en != this) en.Enabled = false;
+                        e.Destroy();
+                        _velocity.Y = -JUMP_SPEED;
+                        _jmpTimer = JUMP_TIMER;
+                        _coyoteTimer = 0.0;
+                        _mover.MoveY(eCollider.Shape.Top - _collider.Shape.Bottom, Globals.TAG_SOLID);
+                        Scene.GetParticleSystem<Blood>().PlaceBlood(new Vector2((_collider.Shape.Right + _collider.Shape.Left) / 2.0f, eCollider.Shape.Top), Color.Red);
                     }
-                    var pd = new PlayerDead();
-                    pd.GetComponent<Transform2D>().Position = _transform.Position;
-                    pd.GetComponent<SpriteRenderer>().SpriteEffects = _renderer.SpriteEffects;
-                    Scene.AddEntity(pd, "Player");
+                    else
+                    {
+                        Destroy();
+                        foreach(Entity en in Scene.GetEntities())
+                        {
+                            if (en != this) en.Enabled = false;
+                        }
+                        var pd = new PlayerDead(_transform.Position.X, _transform.Position.Y, _renderer.SpriteEffects);
+                        Scene.AddEntity(pd, "Player");
+                    }
                 }
             }
             else if((collideTag & Globals.TAG_JEWEL) > 0)
             {
                 e.Destroy();
+            }
+            else if((collideTag & Globals.TAG_PORTAL) > 0)
+            {
+                Destroy();
+                Scene.AddEntity(new PlayerPortal(_transform.Position.X, _transform.Position.Y, _renderer.SpriteEffects, e), "Player");
+                //RoomManager.GotoNextLevel();
             }
 
             Vector2 camOffset = Vector2.UnitX * MathHelper.Clamp(_velocity.X / 1.5f, -40.0f, 40.0f);
@@ -156,10 +147,16 @@ namespace ProjectCape.Entities.Player
             {
                 _renderer.Animation = "walk";
                 _renderer.SpriteEffects = (MathF.Sign(_velocity.X) == 1) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+                if(onGround)
+                {
+                    Vector2 spawnPos = RandomHelper.RandomPosition(new Rectangle((int)_collider.Shape.Left, (int)_collider.Shape.Bottom - 2, (int)_collider.Shape.Right - (int)_collider.Shape.Left, 2));
+                    Scene.GetParticleSystem<Dust>().PlaceDust(spawnPos);
+                }
             }
             else _renderer.Animation = "idle";
 
-            Camera.Position = HonasMathHelper.LerpDelta(Camera.Position, _transform.Position - Camera.CameraSize / 2.0f + camOffset, 1.0f, gameTime);
+            Camera.Position = HonasMathHelper.LerpDelta(Camera.Position, _transform.Position - new Vector2(Camera.CameraSize.X / 2.0f, Camera.CameraSize.Y / 1.8f) + camOffset, 1.0f, gameTime);
 
             base.Update(gameTime);
         }

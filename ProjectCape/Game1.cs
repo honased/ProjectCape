@@ -28,6 +28,7 @@ namespace ProjectCape
 
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 720;
+            //_graphics.IsFullScreen = true;
 
             Camera.CameraSize = new Vector2(320, 180);
             Camera.Bounds = new Rectangle(0, 0, 1000000, 1000000);
@@ -52,7 +53,9 @@ namespace ProjectCape
             AssetLibrary.AddAsset("bushes", Content.Load<Texture2D>("sprites/bg/bushes"));
             AssetLibrary.AddAsset("sky", Content.Load<Texture2D>("sprites/bg/Sky"));
             AssetLibrary.AddAsset("circle", Content.Load<Texture2D>("sprites/particles/circle"));
+            AssetLibrary.AddAsset("square", Content.Load<Texture2D>("sprites/particles/square"));
             AssetLibrary.AddAsset("jewel", Content.Load<Texture2D>("sprites/environment/Jewel"));
+            AssetLibrary.AddAsset("portal", Content.Load<Texture2D>("sprites/environment/Portal"));
             AssetLibrary.AddAsset("tileGrass", Content.Load<Texture2D>("maps/tilesets/tileGrass"));
 
             // Tilesets
@@ -60,6 +63,7 @@ namespace ProjectCape
 
             // Rooms
             AssetLibrary.AddAsset("room_0_0", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_0.json") as JObject));
+            AssetLibrary.AddAsset("room_0_1", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_1.json") as JObject));
 
             var sprite = new Sprite(AssetLibrary.GetAsset<Texture2D>("player"));
             sprite.Animations.Add("idle", SpriteAnimation.FromSpritesheet(1, 0.0, 0, 0, 16, 18));
@@ -79,32 +83,31 @@ namespace ProjectCape
             sprite.Animations.Add("default", SpriteAnimation.FromSpritesheet(1, 0.0, 0, 0, 16, 16));
             AssetLibrary.AddAsset("sprJewel", sprite);
 
-            TiledManager.AddSpawnerDefinition("Player", obj => 
-                {
-                    var player = new Player();
-                    player.GetComponent<Transform2D>().Position = new Vector2(obj.X, obj.Y);
-                    return player; 
-                });
-            TiledManager.AddSpawnerDefinition("Spider", obj =>
-            {
-                var spider = new Spider();
-                spider.GetComponent<Transform2D>().Position = new Vector2(obj.X, obj.Y);
-                return spider;
-            });
+            sprite = new Sprite(AssetLibrary.GetAsset<Texture2D>("portal"));
+            sprite.Animations.Add("default", SpriteAnimation.FromSpritesheet(1, 0.0, 0, 0, 16, 16));
+            AssetLibrary.AddAsset("sprPortal", sprite);
+
+            TiledManager.AddSpawnerDefinition("Player", obj => { return new Player(obj.X, obj.Y); });
+            TiledManager.AddSpawnerDefinition("Spider", obj => { return new Spider(obj.X, obj.Y); });
             TiledManager.AddSpawnerDefinition("Orc", obj =>
             {
-                var orc = new Orc();
-                orc.GetComponent<Transform2D>().Position = new Vector2(obj.X, obj.Y);
-                orc.GetComponent<SpriteRenderer>().SpriteEffects = obj.FlippedHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+                var orc = new Orc(obj.X, obj.Y);
+                if(orc.GetComponent<SpriteRenderer>(out var renderer))
+                {
+                    renderer.SpriteEffects = obj.FlippedHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+                }
                 return orc;
             });
 
-            TiledManager.AddSpawnerDefinition("Collision", obj => { return new CollisionBox(obj.X, obj.Y, obj.Width, obj.Height); });
+            TiledManager.AddSpawnerDefinition("Collision", obj => { return new CollisionBox(obj.X, obj.Y, obj.Width, obj.Height, false); });
+            TiledManager.AddSpawnerDefinition("CollisionOneWay", obj => { return new CollisionBox(obj.X, obj.Y, obj.Width, obj.Height, true); });
             TiledManager.AddSpawnerDefinition("Jewel", obj => { return new Jewel(obj.X, obj.Y); });
+            TiledManager.AddSpawnerDefinition("Portal", obj => { return new Portal(obj.X, obj.Y); });
 
             TiledManager.Goto(AssetLibrary.GetAsset<TiledMap>("room_0_0"));
 
-            Scene.AddParticleSystem(new Dust(5));
+            Scene.AddParticleSystem(new Dust());
+            Scene.AddParticleSystem(new Blood());
         }
 
         protected override void Update(GameTime gameTime)
@@ -114,7 +117,7 @@ namespace ProjectCape
 
             if(Input.IsKeyPressed(Keys.R))
             {
-                AssetLibrary.GetAsset<TiledMap>("room_0_0").Goto();
+                RoomManager.GotoLevel();
             }
 
             // TODO: Add your update logic here

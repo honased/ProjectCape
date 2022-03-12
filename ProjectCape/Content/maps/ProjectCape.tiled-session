@@ -6,12 +6,12 @@
     "activeFile": "rooms/room_0_0.tmx",
     "expandedProjectPaths": [
         "rooms",
+        "tilesets",
         "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Tilesets",
         "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps",
-        "objects",
-        "tilesets",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Templates",
         "tilesets/entities",
-        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Templates"
+        "objects"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -72,11 +72,19 @@
             }
         },
         "rooms/room_0_0.tmx": {
-            "scale": 2,
-            "selectedLayer": 6,
+            "scale": 4,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 260.5,
-                "y": 428
+                "x": 69,
+                "y": 568.5
+            }
+        },
+        "rooms/room_0_1.tmx": {
+            "scale": 2,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 202.5,
+                "y": 232.5
             }
         },
         "tilesets/entities.json": {
@@ -94,7 +102,7 @@
     "last.imagePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/tilesets/entities",
     "last.objectTemplatePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/objects",
     "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
-    "map.height": 30,
+    "map.height": 18,
     "map.lastUsedExportFilter": "JSON map files (*.json)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
