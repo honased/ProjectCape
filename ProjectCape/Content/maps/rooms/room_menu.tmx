@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="3" height="3" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="2">
+ <editorsettings>
+  <export target="room_menu.json" format="json"/>
+ </editorsettings>
+ <imagelayer id="2" name="Sky" locked="1">
+  <image source="../../sprites/bg/sky.png" width="320" height="180"/>
+ </imagelayer>
+ <imagelayer id="4" name="Mountains" locked="1">
+  <image source="../../sprites/bg/mountains.png" width="320" height="180"/>
+ </imagelayer>
+ <imagelayer id="3" name="Bushes" locked="1">
+  <image source="../../sprites/bg/bushes.png" width="320" height="180"/>
+ </imagelayer>
+ <objectgroup id="6" name="Objects">
+  <object id="1" type="Menu" x="0" y="0"/>
+ </objectgroup>
+</map>

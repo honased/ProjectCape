@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using ProjectCape.Entities;
 using ProjectCape.Entities.Enemies;
 using ProjectCape.Entities.Environment;
+using ProjectCape.Entities.Menus;
 using ProjectCape.Entities.Player;
 using ProjectCape.Particles;
 
@@ -65,11 +66,15 @@ namespace ProjectCape
             AssetLibrary.AddAsset("room_0_0", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_0.json") as JObject));
             AssetLibrary.AddAsset("room_0_1", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_1.json") as JObject));
             AssetLibrary.AddAsset("room_0_2", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_2.json") as JObject));
+            AssetLibrary.AddAsset("room_menu", new TiledMap(JSON.FromFile("Content/maps/rooms/room_menu.json") as JObject));
 
             // Music
             AssetLibrary.AddAsset("musForest", Content.Load<Song>("sfx/musForest"));
-            //MediaPlayer.Play(AssetLibrary.GetAsset<Song>("musForest"));
+            MediaPlayer.Play(AssetLibrary.GetAsset<Song>("musForest"));
             MediaPlayer.IsRepeating = true;
+
+            // Fonts
+            AssetLibrary.AddAsset("fntText", Content.Load<SpriteFont>("fonts/fntText"));
 
             var sprite = new Sprite(AssetLibrary.GetAsset<Texture2D>("player"));
             sprite.Animations.Add("idle", SpriteAnimation.FromSpritesheet(1, 0.0, 0, 0, 16, 18));
@@ -109,11 +114,12 @@ namespace ProjectCape
             TiledManager.AddSpawnerDefinition("CollisionOneWay", obj => { return new CollisionBox(obj.X, obj.Y, obj.Width, obj.Height, true); });
             TiledManager.AddSpawnerDefinition("Jewel", obj => { return new Jewel(obj.X, obj.Y); });
             TiledManager.AddSpawnerDefinition("Portal", obj => { return new Portal(obj.X, obj.Y); });
-
-            RoomManager.GotoLevel();
+            TiledManager.AddSpawnerDefinition("Menu", obj => { return new Menu(); });
 
             Scene.AddParticleSystem(new Dust());
             Scene.AddParticleSystem(new Blood());
+
+            RoomManager.Goto("room_menu");
         }
 
         protected override void Update(GameTime gameTime)

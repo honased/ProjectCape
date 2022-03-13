@@ -75,8 +75,8 @@
             "scale": 11,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 18.636363636363633,
-                "y": 439.4545454545455
+                "x": 800,
+                "y": 239.95454545454547
             }
         },
         "rooms/room_0_1.json": {
@@ -91,16 +91,16 @@
             "scale": 2,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 126,
-                "y": -29
+                "x": 800,
+                "y": 144.25
             }
         },
         "rooms/room_0_2.tmx": {
             "scale": 2,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 314.5,
-                "y": 159.5
+                "x": 237,
+                "y": 160.5
             }
         },
         "tilesets/entities.json": {
@@ -118,12 +118,12 @@
     "last.imagePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/tilesets/entities",
     "last.objectTemplatePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/objects",
     "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
-    "map.height": 18,
+    "map.height": 3,
     "map.lastUsedExportFilter": "JSON map files (*.json)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 100,
+    "map.width": 3,
     "openFiles": [
         "tilesets/tilesetGrass.json",
         "rooms/room_0_0.tmx",
