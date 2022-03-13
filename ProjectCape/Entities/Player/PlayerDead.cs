@@ -1,4 +1,5 @@
-﻿using HonasGame.Assets;
+﻿using HonasGame;
+using HonasGame.Assets;
 using HonasGame.ECS;
 using HonasGame.ECS.Components;
 using HonasGame.ECS.Components.Physics;
@@ -35,6 +36,12 @@ namespace ProjectCape.Entities.Player
             float addY = _velocity.CalculateVelocity(gameTime).Y;
 
             _transform.Position += Vector2.UnitY * addY;
+
+            if (_transform.Position.Y > Camera.CameraSize.Y + Camera.Position.Y)
+            {
+                Scene.AddEntity(new RoomTransition(false));
+                Destroy();
+            }
 
             base.Update(gameTime);
         }

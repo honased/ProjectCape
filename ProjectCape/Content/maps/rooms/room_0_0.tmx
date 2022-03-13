@@ -94,6 +94,6 @@
   <object id="121" template="../objects/Portal.tx" x="1528" y="408"/>
  </objectgroup>
  <objectgroup id="2" name="Player">
-  <object id="23" template="../objects/Player.tx" x="1411" y="406.75"/>
+  <object id="23" template="../objects/Player.tx" x="16" y="430"/>
  </objectgroup>
 </map>

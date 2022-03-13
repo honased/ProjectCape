@@ -7,6 +7,7 @@ using HonasGame.Tiled;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using ProjectCape.Entities;
 using ProjectCape.Entities.Enemies;
 using ProjectCape.Entities.Environment;
@@ -31,7 +32,6 @@ namespace ProjectCape
             //_graphics.IsFullScreen = true;
 
             Camera.CameraSize = new Vector2(320, 180);
-            Camera.Bounds = new Rectangle(0, 0, 1000000, 1000000);
         }
 
         protected override void Initialize()
@@ -64,6 +64,12 @@ namespace ProjectCape
             // Rooms
             AssetLibrary.AddAsset("room_0_0", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_0.json") as JObject));
             AssetLibrary.AddAsset("room_0_1", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_1.json") as JObject));
+            AssetLibrary.AddAsset("room_0_2", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_2.json") as JObject));
+
+            // Music
+            AssetLibrary.AddAsset("musForest", Content.Load<Song>("sfx/musForest"));
+            //MediaPlayer.Play(AssetLibrary.GetAsset<Song>("musForest"));
+            MediaPlayer.IsRepeating = true;
 
             var sprite = new Sprite(AssetLibrary.GetAsset<Texture2D>("player"));
             sprite.Animations.Add("idle", SpriteAnimation.FromSpritesheet(1, 0.0, 0, 0, 16, 18));
@@ -104,7 +110,7 @@ namespace ProjectCape
             TiledManager.AddSpawnerDefinition("Jewel", obj => { return new Jewel(obj.X, obj.Y); });
             TiledManager.AddSpawnerDefinition("Portal", obj => { return new Portal(obj.X, obj.Y); });
 
-            TiledManager.Goto(AssetLibrary.GetAsset<TiledMap>("room_0_0"));
+            RoomManager.GotoLevel();
 
             Scene.AddParticleSystem(new Dust());
             Scene.AddParticleSystem(new Blood());
@@ -122,8 +128,6 @@ namespace ProjectCape
 
             // TODO: Add your update logic here
             Scene.Update(gameTime);
-
-            Camera.Position += 2 * Vector2.UnitY;
 
             base.Update(gameTime);
         }

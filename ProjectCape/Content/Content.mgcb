@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:maps/tilesets/tileGrass.png
 
+#begin sfx/musForest.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sfx/musForest.wav
+
 #begin sprites/bg/bushes.png
 /importer:TextureImporter
 /processor:TextureProcessor

@@ -17,6 +17,7 @@ namespace ProjectCape.Entities.Player
         private Transform2D _transform;
         private SpriteRenderer _renderer;
         private Entity _portal;
+        private bool _gotoNextRoom;
 
         private const float GRAVITY = 1000.0f;
         private const float JUMP_SPEED = 300.0f;
@@ -27,6 +28,7 @@ namespace ProjectCape.Entities.Player
             _renderer = new SpriteRenderer(this) { Sprite = AssetLibrary.GetAsset<Sprite>("sprPlayer"), Animation = "idle", SpriteEffects = effects };
             _renderer.CenterOrigin();
             _portal = portal;
+            _gotoNextRoom = true;
         }
 
         public override void Update(GameTime gameTime)
@@ -40,6 +42,12 @@ namespace ProjectCape.Entities.Player
 
             _renderer.Scale = HonasMathHelper.LerpDelta(_renderer.Scale, Vector2.Zero, 0.05f, gameTime);
             _renderer.Rotation = (_renderer.Rotation + (MathHelper.TwoPi * t)) % MathHelper.TwoPi;
+
+            if(_renderer.Scale.X <= .1f && _gotoNextRoom)
+            {
+                Scene.AddEntity(new RoomTransition(true));
+                _gotoNextRoom = false;
+            }
 
             base.Update(gameTime);
         }

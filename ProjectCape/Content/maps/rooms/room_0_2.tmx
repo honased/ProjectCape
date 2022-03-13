@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="100" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="120">
+ <editorsettings>
+  <export target="room_0_2.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" source="../tilesets/tilesetGrass.json"/>
+ <imagelayer id="5" name="Sky" parallaxx="0.98">
+  <image source="../../sprites/bg/sky.png" width="320" height="180"/>
+ </imagelayer>
+ <imagelayer id="6" name="Mountains" offsetx="0" offsety="108" parallaxx="0.75" parallaxy="0.75">
+  <image source="../../sprites/bg/mountains.png" width="320" height="180"/>
+ </imagelayer>
+ <imagelayer id="7" name="Bushes" offsetx="0" offsety="108" parallaxx="0.5" parallaxy="0.5">
+  <image source="../../sprites/bg/bushes.png" width="320" height="180"/>
+ </imagelayer>
+ <layer id="1" name="Grass" width="100" height="18">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,10,1,1,1,1,14,14,1,1,1,1,14,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10,10,10,9,9,9,9,1,1,9,9,9,9,10,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,16,16,16,1,1,1,1,1,9,9,9,9,9,9,9,9,9,9,10,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,10,10,10,10,10,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,16,16,16,9,9,9,9,9,9,9,10,10,10,10,10,1,1,1,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,10,10,1,1,1,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,16,16,16,16,16,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,16,16,16,9,9,9,9,9,9,9,10,10,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,15,16,16,16,16,15,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,8,0,0,0,0,1,1,1,1,1,1,1,1,1,1,
+0,0,0,0,0,0,0,0,0,0,16,16,16,9,9,9,9,9,9,9,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,0,13,0,11,11,0,0,0,0,0,0,0,0,15,0,0,15,0,0,15,16,16,16,1,0,0,0,0,0,0,0,0,0,0,0,16,1,0,0,15,16,16,16,16,15,0,0,0,8,0,0,0,0,9,9,9,9,9,9,9,9,9,9,
+1,11,0,11,12,11,12,11,12,0,0,0,11,9,9,9,9,9,9,9,9,9,16,16,16,15,0,0,15,16,16,16,15,0,0,1,1,1,1,1,1,1,0,0,15,0,0,15,0,0,8,0,0,8,0,0,8,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,9,0,0,8,0,0,0,0,8,0,0,0,8,0,0,0,0,9,9,9,9,9,9,9,9,9,9,
+9,1,1,1,1,1,1,1,1,1,1,1,1,9,9,9,9,9,9,9,9,9,0,0,0,8,0,0,8,0,0,0,8,0,0,9,9,9,9,9,9,9,0,0,8,0,0,8,0,0,8,0,0,8,0,0,8,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,9,0,0,8,0,0,0,0,8,0,0,0,8,0,0,0,0,9,9,9,9,9,9,9,9,9,9,
+9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,8,0,0,8,0,0,0,8,0,0,9,9,9,9,9,9,9,0,0,8,0,0,8,0,0,8,0,0,8,0,0,8,0,0,0,9,1,1,1,1,1,1,1,1,1,1,1,1,9,0,0,8,0,0,0,0,8,0,0,0,8,0,0,0,0,9,9,9,9,9,9,9,9,9,9,
+9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,8,0,0,8,0,0,0,8,0,0,9,9,9,9,9,9,9,0,0,8,0,0,8,0,0,8,0,0,8,0,0,8,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,8,0,0,0,0,8,0,0,0,8,0,0,0,0,9,9,9,9,9,9,9,9,9,9
+</data>
+ </layer>
+ <objectgroup id="4" name="Collision">
+  <object id="39" template="../objects/Collision.tx" x="0" y="224"/>
+  <object id="40" template="../objects/Collision.tx" x="0" y="240" width="208" height="16"/>
+  <object id="41" template="../objects/Collision.tx" x="208" y="112" width="112" height="128"/>
+  <object id="42" template="../objects/Collision.tx" x="208" y="0" width="64" height="96"/>
+  <object id="44" template="../objects/Collision.tx" x="272" y="48" width="208" height="16"/>
+  <object id="45" template="../objects/Collision.tx" x="464" y="64" width="16" height="96"/>
+  <object id="46" template="../objects/Collision.tx" x="400" y="144" width="64" height="48"/>
+  <object id="47" template="../objects/Collision.tx" x="352" y="160" width="48" height="32"/>
+  <object id="48" template="../objects/Collision.tx" x="288" y="80" width="64" height="64"/>
+  <object id="49" template="../objects/Collision.tx" x="352" y="96" width="32" height="48"/>
+  <object id="50" template="../objects/Collision.tx" x="384" y="80" width="64" height="48"/>
+  <object id="51" template="../objects/CollisionOneWay.tx" x="160" y="112" width="48" height="2"/>
+  <object id="52" template="../objects/CollisionOneWay.tx" x="160" y="144" width="48" height="2"/>
+  <object id="53" template="../objects/CollisionOneWay.tx" x="160" y="176" width="48" height="2"/>
+  <object id="54" template="../objects/CollisionOneWay.tx" x="160" y="208" width="48" height="2"/>
+  <object id="55" template="../objects/CollisionOneWay.tx" x="352" y="80" width="32" height="2"/>
+  <object id="56" template="../objects/CollisionOneWay.tx" x="448" y="80"/>
+  <object id="57" template="../objects/Collision.tx" x="-16" y="64" width="16" height="160"/>
+  <object id="58" template="../objects/Collision.tx" x="320" y="224" width="32" height="64"/>
+  <object id="59" template="../objects/Collision.tx" x="560" y="224" width="112" height="64"/>
+  <object id="60" template="../objects/Collision.tx" x="960" y="256" width="224" height="32"/>
+  <object id="61" template="../objects/Collision.tx" x="960" y="208" width="16" height="48"/>
+  <object id="62" template="../objects/Collision.tx" x="1168" y="208" width="16" height="48"/>
+  <object id="63" template="../objects/Collision.tx" x="1440" y="192" width="160" height="96"/>
+  <object id="64" template="../objects/CollisionOneWay.tx" x="352" y="224" width="64" height="2"/>
+  <object id="65" template="../objects/CollisionOneWay.tx" x="448" y="224" width="80" height="2"/>
+  <object id="66" template="../objects/CollisionOneWay.tx" x="704" y="224"/>
+  <object id="67" template="../objects/CollisionOneWay.tx" x="752" y="224"/>
+  <object id="68" template="../objects/CollisionOneWay.tx" x="800" y="208"/>
+  <object id="69" template="../objects/CollisionOneWay.tx" x="848" y="208"/>
+  <object id="70" template="../objects/CollisionOneWay.tx" x="896" y="208" width="64" height="2"/>
+  <object id="71" template="../objects/CollisionOneWay.tx" x="1152" y="208"/>
+  <object id="72" template="../objects/CollisionOneWay.tx" x="1216" y="208" width="96" height="2"/>
+  <object id="73" template="../objects/CollisionOneWay.tx" x="1264" y="160" width="112" height="2"/>
+  <object id="74" template="../objects/CollisionOneWay.tx" x="1360" y="176" width="96" height="2"/>
+  <object id="75" template="../objects/Collision.tx" x="1600" y="0" width="16" height="192"/>
+ </objectgroup>
+ <objectgroup id="2" name="Enemies">
+  <object id="37" template="../objects/Orc.tx" x="336" y="62"/>
+  <object id="38" template="../objects/Orc.tx" x="416" y="126"/>
+  <object id="76" template="../objects/Orc.tx" x="480" y="206"/>
+  <object id="77" template="../objects/Orc.tx" x="704" y="206"/>
+  <object id="78" template="../objects/Orc.tx" x="752" y="206"/>
+  <object id="79" template="../objects/Orc.tx" x="800" y="190"/>
+  <object id="80" template="../objects/Orc.tx" x="848" y="190"/>
+  <object id="81" template="../objects/Spider.tx" x="976" y="240"/>
+  <object id="82" template="../objects/Spider.tx" x="1136" y="240"/>
+  <object id="83" template="../objects/Spider.tx" x="1056" y="240"/>
+  <object id="84" template="../objects/Orc.tx" x="1232" y="190"/>
+  <object id="85" template="../objects/Orc.tx" x="1408" y="158"/>
+  <object id="86" template="../objects/Orc.tx" x="1296" y="142"/>
+  <object id="87" template="../objects/Orc.tx" x="1328" y="142"/>
+  <object id="88" template="../objects/Portal.tx" x="1568" y="168"/>
+  <object id="89" template="../objects/Jewel.tx" x="352" y="80"/>
+  <object id="91" template="../objects/Jewel.tx" x="368" y="80"/>
+  <object id="92" template="../objects/Jewel.tx" x="176" y="152"/>
+  <object id="93" template="../objects/Jewel.tx" x="176" y="184"/>
+  <object id="95" template="../objects/Jewel.tx" x="176" y="120"/>
+  <object id="97" template="../objects/Jewel.tx" x="424" y="200"/>
+  <object id="98" template="../objects/Jewel.tx" x="728" y="176"/>
+  <object id="99" template="../objects/Jewel.tx" x="776" y="176"/>
+  <object id="100" template="../objects/Jewel.tx" x="824" y="160"/>
+  <object id="101" template="../objects/Jewel.tx" x="872" y="160"/>
+  <object id="108" template="../objects/Jewel.tx" x="976" y="240"/>
+  <object id="109" template="../objects/Jewel.tx" x="992" y="240"/>
+  <object id="110" template="../objects/Jewel.tx" x="1008" y="240"/>
+  <object id="111" template="../objects/Jewel.tx" x="1024" y="240"/>
+  <object id="112" template="../objects/Jewel.tx" x="1040" y="240"/>
+  <object id="113" template="../objects/Jewel.tx" x="1072" y="240"/>
+  <object id="114" template="../objects/Jewel.tx" x="1056" y="240"/>
+  <object id="115" template="../objects/Jewel.tx" x="1088" y="240"/>
+  <object id="116" template="../objects/Jewel.tx" x="1104" y="240"/>
+  <object id="117" template="../objects/Jewel.tx" x="1120" y="240"/>
+  <object id="118" template="../objects/Jewel.tx" x="1136" y="240"/>
+  <object id="119" template="../objects/Jewel.tx" x="1152" y="240"/>
+ </objectgroup>
+ <objectgroup id="3" name="Player">
+  <object id="4" template="../objects/Player.tx" x="16" y="222"/>
+ </objectgroup>
+</map>

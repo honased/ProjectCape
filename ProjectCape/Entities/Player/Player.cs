@@ -53,6 +53,23 @@ namespace ProjectCape.Entities.Player
             if (_collider.CollidesWith(Globals.TAG_SOLID | Globals.TAG_ONE_WAY, Vector2.UnitY, out e))
             {
                 onGround = true;
+                
+                if(e.GetComponent<Collider2D>(out var eCollider))
+                {
+                    if((eCollider.Tag & Globals.TAG_ONE_WAY) > 0)
+                    {
+                        var left = Input.IsKeyDown(Keys.A) || Input.IsKeyDown(Keys.Left) || Input.IsButtonDown(Buttons.DPadLeft) || Input.CheckAnalogDirection(true, true, -1);
+                        var right = Input.IsKeyDown(Keys.D) || Input.IsKeyDown(Keys.Right) || Input.IsButtonDown(Buttons.DPadRight) || Input.CheckAnalogDirection(true, true, 1);
+                        var down = Input.IsKeyDown(Keys.S) || Input.IsKeyDown(Keys.Down) || Input.IsButtonDown(Buttons.DPadDown) || Input.CheckAnalogDirection(true, false, 1);
+                        var jump = Input.IsKeyDown(Keys.Space) || Input.IsButtonDown(Buttons.A);
+                        if (down && !(left || right) && jump)
+                        {
+                            onGround = false;
+                            _coyoteTimer = 0.0f;
+                            _transform.Position += Vector2.UnitY;
+                        }
+                    }
+                }
             }
 
             if (_jmpTimer > 0.0)
@@ -137,7 +154,6 @@ namespace ProjectCape.Entities.Player
             {
                 Destroy();
                 Scene.AddEntity(new PlayerPortal(_transform.Position.X, _transform.Position.Y, _renderer.SpriteEffects, e), "Player");
-                //RoomManager.GotoNextLevel();
             }
 
             Vector2 camOffset = Vector2.UnitX * MathHelper.Clamp(_velocity.X / 1.5f, -40.0f, 40.0f);
@@ -157,6 +173,12 @@ namespace ProjectCape.Entities.Player
             else _renderer.Animation = "idle";
 
             Camera.Position = HonasMathHelper.LerpDelta(Camera.Position, _transform.Position - new Vector2(Camera.CameraSize.X / 2.0f, Camera.CameraSize.Y / 1.8f) + camOffset, 1.0f, gameTime);
+
+            if(_transform.Position.Y - 24.0f > Camera.Bounds.Height)
+            {
+                Destroy();
+                Scene.AddEntity(new RoomTransition(false));
+            }
 
             base.Update(gameTime);
         }
