@@ -5,6 +5,7 @@ using HonasGame.ECS.Components.Physics;
 using HonasGame.Helper;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using ProjectCape.Entities.Environment;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,8 @@ namespace ProjectCape.Entities.Player
             {
                 Scene.AddEntity(new RoomTransition(true));
                 _gotoNextRoom = false;
+
+                if (RoomManager.CurrentLevel == 3) SongManager.TransitionSong(AssetLibrary.GetAsset<Song>("musMenu"), 0.5, false);
             }
 
             base.Update(gameTime);

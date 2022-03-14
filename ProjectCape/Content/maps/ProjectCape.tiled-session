@@ -72,11 +72,11 @@
             }
         },
         "rooms/room_0_0.tmx": {
-            "scale": 11,
-            "selectedLayer": 7,
+            "scale": 3,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 800,
-                "y": 239.95454545454547
+                "x": 168.66666666666663,
+                "y": 519.3333333333333
             }
         },
         "rooms/room_0_1.json": {
@@ -88,19 +88,27 @@
             }
         },
         "rooms/room_0_1.tmx": {
-            "scale": 2,
-            "selectedLayer": 3,
+            "scale": 1.5,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 800,
-                "y": 144.25
+                "x": 1507.3333333333333,
+                "y": 236
             }
         },
         "rooms/room_0_2.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 927.3333333333333,
+                "y": 142.66666666666669
+            }
+        },
+        "rooms/room_menu.tmx": {
             "scale": 2,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 237,
-                "y": 160.5
+                "x": 150.5,
+                "y": 143.5
             }
         },
         "tilesets/entities.json": {

@@ -11,6 +11,7 @@ namespace ProjectCape.Entities.Environment
     {
         private SpriteRenderer _renderer;
         private Transform2D _transform;
+        private Vector2 _originalPos;
 
         public Jewel(float x, float y)
         {
@@ -20,12 +21,13 @@ namespace ProjectCape.Entities.Environment
             _renderer.CenterOrigin();
             var collider = new Collider2D(this) { Shape = new BoundingRectangle(8, 10) { Offset = new Vector2(4, 3) }, Transform = _transform, Tag = Globals.TAG_JEWEL };
             collider.Shape.Offset = new Vector2(-_renderer.Sprite.Texture.Width / 4.0f, -_renderer.Sprite.Texture.Height / 4.0f);
+            _originalPos = _transform.Position;
         }
 
         public override void Update(GameTime gameTime)
         {
             float t = (float)gameTime.TotalGameTime.TotalSeconds;
-            _renderer.Rotation = MathF.Sin((t + _transform.Position.X / 32.0f) * 2.0f) / 2.5f;
+            _transform.Position = _originalPos + Vector2.UnitY * (MathF.Sin(t * 1.5f + _transform.Position.X / 32.0f) * 3.0f);
 
             base.Update(gameTime);
         }

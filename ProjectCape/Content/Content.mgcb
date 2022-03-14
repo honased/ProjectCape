@@ -38,6 +38,42 @@
 /processorParam:Quality=Best
 /build:sfx/musForest.wav
 
+#begin sfx/musMenu.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sfx/musMenu.wav
+
+#begin sfx/sndDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/sndDeath.wav
+
+#begin sfx/sndJewel.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/sndJewel.wav
+
+#begin sfx/sndJump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/sndJump.wav
+
+#begin sfx/sndKill.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/sndKill.wav
+
+#begin sfx/sndPortal.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/sndPortal.wav
+
 #begin sprites/bg/bushes.png
 /importer:TextureImporter
 /processor:TextureProcessor

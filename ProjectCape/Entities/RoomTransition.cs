@@ -4,6 +4,7 @@ using HonasGame.ECS.Components;
 using HonasGame.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ProjectCape.Entities.GUI;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -38,6 +39,10 @@ namespace ProjectCape.Entities
                 _goToRoom = false;
                 if (_nextRoom) RoomManager.GotoNextLevel();
                 else RoomManager.GotoLevel();
+                /*if(RoomManager.CurrentLevel == 1 && !Scene.GetEntity<JewelCounter>(out var jc))
+                {
+                    Scene.AddEntity(new JewelCounter() { Depth = 1000 });
+                }*/
             }
             else if(_transform.Position.X <= -_width)
             {

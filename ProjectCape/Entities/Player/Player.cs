@@ -5,6 +5,7 @@ using HonasGame.ECS.Components;
 using HonasGame.ECS.Components.Physics;
 using HonasGame.Helper;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectCape.Particles;
@@ -58,11 +59,9 @@ namespace ProjectCape.Entities.Player
                 {
                     if((eCollider.Tag & Globals.TAG_ONE_WAY) > 0)
                     {
-                        var left = Input.IsKeyDown(Keys.A) || Input.IsKeyDown(Keys.Left) || Input.IsButtonDown(Buttons.DPadLeft) || Input.CheckAnalogDirection(true, true, -1);
-                        var right = Input.IsKeyDown(Keys.D) || Input.IsKeyDown(Keys.Right) || Input.IsButtonDown(Buttons.DPadRight) || Input.CheckAnalogDirection(true, true, 1);
                         var down = Input.IsKeyDown(Keys.S) || Input.IsKeyDown(Keys.Down) || Input.IsButtonDown(Buttons.DPadDown) || Input.CheckAnalogDirection(true, false, 1);
                         var jump = Input.IsKeyDown(Keys.Space) || Input.IsButtonDown(Buttons.A);
-                        if (down && !(left || right) && jump)
+                        if (down && jump)
                         {
                             onGround = false;
                             _coyoteTimer = 0.0f;
@@ -100,6 +99,7 @@ namespace ProjectCape.Entities.Player
                 _velocity.Y = -JUMP_SPEED;
                 _jmpTimer = JUMP_TIMER;
                 _coyoteTimer = 0.0;
+                AssetLibrary.GetAsset<SoundEffect>("sndJump").Play();
                 //Scene.GetParticleSystem<Blood>().PlaceBlood(_transform.Position);
             }
 
@@ -133,6 +133,7 @@ namespace ProjectCape.Entities.Player
                         _coyoteTimer = 0.0;
                         _mover.MoveY(eCollider.Shape.Top - _collider.Shape.Bottom, Globals.TAG_SOLID);
                         Scene.GetParticleSystem<Blood>().PlaceBlood(new Vector2((_collider.Shape.Right + _collider.Shape.Left) / 2.0f, eCollider.Shape.Top), Color.Red);
+                        AssetLibrary.GetAsset<SoundEffect>("sndKill").Play();
                     }
                     else
                     {
@@ -143,17 +144,20 @@ namespace ProjectCape.Entities.Player
                         }
                         var pd = new PlayerDead(_transform.Position.X, _transform.Position.Y, _renderer.SpriteEffects);
                         Scene.AddEntity(pd, "Player");
+                        AssetLibrary.GetAsset<SoundEffect>("sndDeath").Play();
                     }
                 }
             }
             else if((collideTag & Globals.TAG_JEWEL) > 0)
             {
                 e.Destroy();
+                AssetLibrary.GetAsset<SoundEffect>("sndJewel").Play();
             }
             else if((collideTag & Globals.TAG_PORTAL) > 0)
             {
                 Destroy();
                 Scene.AddEntity(new PlayerPortal(_transform.Position.X, _transform.Position.Y, _renderer.SpriteEffects, e), "Player");
+                AssetLibrary.GetAsset<SoundEffect>("sndPortal").Play();
             }
 
             Vector2 camOffset = Vector2.UnitX * MathHelper.Clamp(_velocity.X / 1.5f, -40.0f, 40.0f);
@@ -178,6 +182,7 @@ namespace ProjectCape.Entities.Player
             {
                 Destroy();
                 Scene.AddEntity(new RoomTransition(false));
+                AssetLibrary.GetAsset<SoundEffect>("sndDeath").Play();
             }
 
             base.Update(gameTime);

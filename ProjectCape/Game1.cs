@@ -5,12 +5,14 @@ using HonasGame.ECS.Components;
 using HonasGame.JSON;
 using HonasGame.Tiled;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using ProjectCape.Entities;
 using ProjectCape.Entities.Enemies;
 using ProjectCape.Entities.Environment;
+using ProjectCape.Entities.GUI;
 using ProjectCape.Entities.Menus;
 using ProjectCape.Entities.Player;
 using ProjectCape.Particles;
@@ -30,6 +32,7 @@ namespace ProjectCape
 
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 720;
+            Window.Title = "Forgotten Wisp";
             //_graphics.IsFullScreen = true;
 
             Camera.CameraSize = new Vector2(320, 180);
@@ -69,9 +72,15 @@ namespace ProjectCape
             AssetLibrary.AddAsset("room_menu", new TiledMap(JSON.FromFile("Content/maps/rooms/room_menu.json") as JObject));
 
             // Music
+            AssetLibrary.AddAsset("musMenu", Content.Load<Song>("sfx/musMenu"));
             AssetLibrary.AddAsset("musForest", Content.Load<Song>("sfx/musForest"));
-            MediaPlayer.Play(AssetLibrary.GetAsset<Song>("musForest"));
-            MediaPlayer.IsRepeating = true;
+
+            // SFX
+            AssetLibrary.AddAsset("sndJump", Content.Load<SoundEffect>("sfx/sndJump"));
+            AssetLibrary.AddAsset("sndJewel", Content.Load<SoundEffect>("sfx/sndJewel"));
+            AssetLibrary.AddAsset("sndKill", Content.Load<SoundEffect>("sfx/sndKill"));
+            AssetLibrary.AddAsset("sndPortal", Content.Load<SoundEffect>("sfx/sndPortal"));
+            AssetLibrary.AddAsset("sndDeath", Content.Load<SoundEffect>("sfx/sndDeath"));
 
             // Fonts
             AssetLibrary.AddAsset("fntText", Content.Load<SpriteFont>("fonts/fntText"));
@@ -120,6 +129,7 @@ namespace ProjectCape
             Scene.AddParticleSystem(new Blood());
 
             RoomManager.Goto("room_menu");
+            SongManager.PlaySong(AssetLibrary.GetAsset<Song>("musMenu"));
         }
 
         protected override void Update(GameTime gameTime)
@@ -134,6 +144,12 @@ namespace ProjectCape
 
             // TODO: Add your update logic here
             Scene.Update(gameTime);
+            SongManager.Update(gameTime);
+
+            if(Scene.GetEntity<Menu>(out var menu))
+            {
+                if (menu.Quit) Exit();
+            }
 
             base.Update(gameTime);
         }

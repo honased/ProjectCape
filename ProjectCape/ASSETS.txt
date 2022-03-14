@@ -1,0 +1,37 @@
+Content/sprites/bg/bushes.png - created by Eric Honas for this game, released under public domain
+
+Content/sprites/bg/mountains.png - created by Eric Honas for this game, released under public domain
+
+Content/sprites/bg/sky.png - created by Eric Honas for this game, released under public domain
+
+Content/sprites/enemies/Orc.png - created by Eric Honas for this game, released under public domain
+
+Content/sprites/enemies/Spider.png - created by Eric Honas for this game, released under public domain
+
+Content/sprites/environment/Jewel.png - created by Eric Honas for this game, released under public domain
+
+Content/sprites/environment/Portal.png - created by Eric Honas for this game, released under public domain
+
+Content/sprites/particles/circle.png - created by Eric Honas for this game, released under public domain
+
+Content/sprites/particles/square.png - created by Eric Honas for this game, released under public domain
+
+Content/sprites/player/player.png - created by Eric Honas for this game, released under public domain
+
+Content/maps/tilesets/tileGrass.png - created by Eric Honas for this game, released under public domain
+
+Content/sfx/musForest.wav - created by Eric Honas for this game, released under public domain
+
+Content/sfx/musMenu.wav - created by Eric Honas for this game, released under public domain
+
+Content/sfx/sndDeath.wav - created by Eric Honas for this game, released under public domain
+
+Content/sfx/sndJewel.wav - created by Eric Honas for this game, released under public domain
+
+Content/sfx/sndJump.wav - created by Eric Honas for this game, released under public domain
+
+Content/sfx/sndKill.wav - created by Eric Honas for this game, released under public domain
+
+Content/sfx/sndPortal.wav - created by Eric Honas for this game, released under public domain
+
+Content/PX Garamond/PX Garamond Regular.ttf - PX Garamond Regular font created by Tristan Dannenberg, released on Github (https://github.com/teryror/pixel-fonts) under the Open Font License
