@@ -3,15 +3,15 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "rooms/room_0_2.tmx",
+    "activeFile": "rooms/room_0_0.tmx",
     "expandedProjectPaths": [
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Templates",
         "tilesets",
-        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Tilesets",
-        "objects",
-        "rooms",
         "tilesets/entities",
-        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps",
-        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Templates"
+        "rooms",
+        "objects",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Tilesets",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -72,11 +72,11 @@
             }
         },
         "rooms/room_0_0.tmx": {
-            "scale": 3,
+            "scale": 2,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 168.66666666666663,
-                "y": 519.3333333333333
+                "x": 172,
+                "y": 331
             }
         },
         "rooms/room_0_1.json": {
@@ -91,24 +91,24 @@
             "scale": 1.5,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1507.3333333333333,
-                "y": 236
+                "x": 134,
+                "y": 146
             }
         },
         "rooms/room_0_2.tmx": {
             "scale": 1.5,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 927.3333333333333,
-                "y": 142.66666666666669
+                "x": 800,
+                "y": 144.33333333333334
             }
         },
         "rooms/room_menu.tmx": {
             "scale": 2,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 150.5,
-                "y": 143.5
+                "x": 24,
+                "y": 24.25
             }
         },
         "tilesets/entities.json": {
@@ -136,23 +136,24 @@
         "tilesets/tilesetGrass.json",
         "rooms/room_0_0.tmx",
         "rooms/room_0_1.tmx",
-        "rooms/room_0_2.tmx"
+        "rooms/room_0_2.tmx",
+        "rooms/room_menu.tmx"
     ],
     "project": "ProjectCape.tiled-project",
     "property.type": "bool",
     "recentFiles": [
         "tilesets/tilesetGrass.json",
-        "rooms/room_0_0.tmx",
-        "rooms/room_0_1.tmx",
+        "rooms/room_menu.tmx",
         "rooms/room_0_2.tmx",
+        "rooms/room_0_1.tmx",
+        "rooms/room_0_0.tmx",
         "rooms/room_0_1.json",
         "tilesets/entities.json",
         "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps/Map01.tmx",
         "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps/Map01.json",
         "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Tilesets/GrassTileset.json",
         "F:/cis580/Sandbox/Sandbox/Content/Tiled/Tilesets/MedievalGrass.tsx",
-        "F:/cis580/Sandbox/Sandbox/Content/Tiled/Map1.tmx",
-        "F:/cis580/Tiled/TestTileset.tsx"
+        "F:/cis580/Sandbox/Sandbox/Content/Tiled/Map1.tmx"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.tileSize": {

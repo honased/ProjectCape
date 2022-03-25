@@ -4,6 +4,7 @@ using HonasGame.ECS;
 using HonasGame.ECS.Components;
 using HonasGame.JSON;
 using HonasGame.Tiled;
+using HonasGame.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,6 +17,7 @@ using ProjectCape.Entities.GUI;
 using ProjectCape.Entities.Menus;
 using ProjectCape.Entities.Player;
 using ProjectCape.Particles;
+using System.Diagnostics;
 
 namespace ProjectCape
 {
@@ -23,6 +25,7 @@ namespace ProjectCape
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Stopwatch _watch;
 
         public Game1()
         {
@@ -41,6 +44,7 @@ namespace ProjectCape
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            _watch = new Stopwatch();
 
             base.Initialize();
         }
@@ -156,10 +160,18 @@ namespace ProjectCape
 
         protected override void Draw(GameTime gameTime)
         {
+            _watch.Restart();
+            _watch.Start();
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
             Scene.Draw(gameTime, _spriteBatch, new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight));
+
+            _watch.Stop();
+            _spriteBatch.Begin();
+            _spriteBatch.DrawFilledRectangle(new Rectangle(8, 8, 48, 16), Color.Black);
+            _spriteBatch.DrawString(AssetLibrary.GetAsset<SpriteFont>("fntText"), $"{(1000000000.0 * (double)_watch.ElapsedTicks / Stopwatch.Frequency) / 1000000.0}", new Vector2(10, 10), Color.Yellow);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
