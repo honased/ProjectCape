@@ -1,0 +1,90 @@
+﻿using HonasGame;
+using HonasGame.Assets;
+using HonasGame.ECS;
+using HonasGame.ECS.Components;
+using HonasGame.Rendering;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ProjectCape.Entities.Menus
+{
+    public class Outro : Entity
+    {
+        private const double TEXT_TIMER = 0.06f;
+
+        private SpriteFont _font;
+        private string _text;
+        private int _textIndex;
+        private double timer;
+
+        public Outro()
+        {
+            _font = AssetLibrary.GetAsset<SpriteFont>("fntText");
+            _text = "";
+            _textIndex = 0;
+            timer = TEXT_TIMER;
+            var routine = new Coroutine(this, Routine());
+            routine.Start();
+        }
+
+        private IEnumerator<double> Routine()
+        {
+            yield return 1.0;
+            _textIndex = 0;
+            _text = "Wisp...";
+            yield return 2.0;
+            _textIndex = 0;
+            _text = "";
+            yield return 1.0;
+            _textIndex = 0;
+            _text = $"You left {Globals.TotalJewels - Globals.CollectedJewels} jewel{((Globals.TotalJewels == Globals.CollectedJewels + 1) ? "" : "s")} behind...";
+            yield return 5.0;
+            _textIndex = 0;
+            _text = "";
+            yield return 1.0;
+            _textIndex = 0;
+            _text = "There is still work to be done...";
+            yield return 5.0;
+            _textIndex = 0;
+            _text = "";
+            yield return 1.0;
+            _textIndex = 0;
+            _text = "But rest for now, wisp...";
+            yield return 4.0;
+            _textIndex = 0;
+            _text = "";
+            yield return 3.0;
+            Scene.AddEntity(new RoomTransition(true));
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (timer <= 0)
+            {
+                if (_textIndex < _text.Length) _textIndex += 1;
+                timer = TEXT_TIMER;
+            }
+            else timer -= gameTime.ElapsedGameTime.TotalSeconds;
+
+            base.Update(gameTime);
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawFilledRectangle(Vector2.Zero, Camera.CameraSize, Color.Black);
+            string strSubset = _text.Substring(0, _textIndex);
+            var origin = _font.MeasureString(_text) / 2.0f;
+
+            spriteBatch.DrawString(_font, strSubset, Camera.CameraSize / 2.0f, Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
+
+            base.Draw(gameTime, spriteBatch);
+        }
+
+        protected override void Cleanup()
+        {
+        }
+    }
+}

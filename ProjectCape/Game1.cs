@@ -75,6 +75,7 @@ namespace ProjectCape
             AssetLibrary.AddAsset("room_0_2", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_2.json") as JObject));
             AssetLibrary.AddAsset("room_menu", new TiledMap(JSON.FromFile("Content/maps/rooms/room_menu.json") as JObject));
             AssetLibrary.AddAsset("room_intro", new TiledMap(JSON.FromFile("Content/maps/rooms/room_intro.json") as JObject));
+            AssetLibrary.AddAsset("room_outro", new TiledMap(JSON.FromFile("Content/maps/rooms/room_outro.json") as JObject));
             AssetLibrary.AddAsset("room_inbetween", new TiledMap(JSON.FromFile("Content/maps/rooms/room_inbetween.json") as JObject));
 
             // Music
@@ -131,6 +132,7 @@ namespace ProjectCape
             TiledManager.AddSpawnerDefinition("Portal", obj => { return new Portal(obj.X, obj.Y); });
             TiledManager.AddSpawnerDefinition("Menu", obj => { return new Menu(); });
             TiledManager.AddSpawnerDefinition("Intro", obj => { return new Intro(); });
+            TiledManager.AddSpawnerDefinition("Outro", obj => { return new Outro(); });
             TiledManager.AddSpawnerDefinition("JewelDeposit", obj => { return new JewelDeposit(); });
 
             Scene.AddParticleSystem(new Dust());

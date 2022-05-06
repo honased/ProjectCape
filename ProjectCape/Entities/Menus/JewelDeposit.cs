@@ -59,6 +59,7 @@ namespace ProjectCape.Entities.Menus
             {
                 jewelCount = jc.GetJewelCount();
                 jc.Destroy();
+                Globals.CollectedJewels += jewelCount;
             }
 
             var routine = new Coroutine(this, Routine());

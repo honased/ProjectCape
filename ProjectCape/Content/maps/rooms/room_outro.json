@@ -5,14 +5,14 @@
         {
          "draworder":"topdown",
          "id":2,
-         "name":"Objects",
+         "name":"Object Layer 1",
          "objects":[
                 {
                  "height":16,
                  "id":1,
                  "name":"",
                  "rotation":0,
-                 "type":"JewelDeposit",
+                 "type":"Outro",
                  "visible":true,
                  "width":16,
                  "x":16,

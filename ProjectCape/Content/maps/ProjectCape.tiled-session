@@ -3,13 +3,13 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "rooms/room_inbetween.tmx",
+    "activeFile": "rooms/room_0_2.json",
     "expandedProjectPaths": [
-        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Templates",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps",
         "rooms",
+        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Templates",
         "tilesets/entities",
         "tilesets",
-        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps",
         "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Tilesets",
         "objects"
     ],
@@ -75,7 +75,7 @@
             "scale": 0.75,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 526.6666666666665,
+                "x": 527.3333333333333,
                 "y": 182.66666666666663
             }
         },
@@ -91,23 +91,31 @@
             "scale": 1.5,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 800,
-                "y": 144.33333333333334
+                "x": 799.6666666666667,
+                "y": 144.66666666666666
+            }
+        },
+        "rooms/room_0_2.json": {
+            "scale": 0.67984375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 59.57251206619162,
+                "y": 144.1507699379453
             }
         },
         "rooms/room_0_2.tmx": {
             "scale": 1.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 800,
-                "y": 144.33333333333334
+                "x": 799.6666666666667,
+                "y": 144.66666666666666
             }
         },
         "rooms/room_inbetween.tmx": {
             "scale": 11,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 27.909090909090914,
+                "x": 27.954545454545457,
                 "y": 23.90909090909091
             }
         },
@@ -115,24 +123,32 @@
             "scale": 16.803124999999998,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 23.98363399665241,
-                "y": 23.953877626929515
+                "x": 24.013390366375305,
+                "y": 23.983633996652415
             }
         },
         "rooms/room_menu.json": {
             "scale": 17.733333333333334,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 23.96616541353383,
-                "y": 23.994360902255636
+                "x": 24.050751879699245,
+                "y": 24.022556390977442
             }
         },
         "rooms/room_menu.tmx": {
             "scale": 2,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 24,
-                "y": 24.25
+                "x": 24.25,
+                "y": 24.5
+            }
+        },
+        "rooms/room_outro.tmx": {
+            "scale": 17.733333333333334,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 24.050751879699245,
+                "y": 24.022556390977442
             }
         },
         "tilesets/entities.json": {
@@ -146,12 +162,12 @@
             "scaleInEditor": 8
         }
     },
-    "last.exportedFilePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/rooms",
+    "last.exportedFilePath": "C:/Users/honas/Documents/CIS580/ProjectCape/ProjectCape/Content/maps/rooms",
     "last.imagePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/tilesets/entities",
     "last.objectTemplatePath": "F:/cis580/ProjectCape/ProjectCape/Content/maps/objects",
     "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
     "map.height": 3,
-    "map.lastUsedExportFilter": "JSON map files (*.json)",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
@@ -164,7 +180,9 @@
         "rooms/room_menu.tmx",
         "rooms/room_menu.json",
         "rooms/room_intro.tmx",
-        "rooms/room_inbetween.tmx"
+        "rooms/room_inbetween.tmx",
+        "rooms/room_outro.tmx",
+        "rooms/room_0_2.json"
     ],
     "project": "ProjectCape.tiled-project",
     "property.type": "bool",
@@ -177,10 +195,10 @@
         "rooms/room_menu.json",
         "rooms/room_intro.tmx",
         "rooms/room_inbetween.tmx",
+        "rooms/room_outro.tmx",
+        "rooms/room_0_2.json",
         "rooms/room_0_1.json",
-        "tilesets/entities.json",
-        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps/Map01.tmx",
-        "F:/cis580/ProjectKnight/ProjectKnight/Content/Tiled/Maps/Map01.json"
+        "tilesets/entities.json"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.tileSize": {

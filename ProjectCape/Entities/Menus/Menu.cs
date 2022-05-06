@@ -25,6 +25,9 @@ namespace ProjectCape.Entities.Menus
 
             _font = AssetLibrary.GetAsset<SpriteFont>("fntText");
             _startSelected = true;
+            Globals.CollectedJewels = 0;
+            Globals.TotalJewels = 0;
+            Globals.AddToTotalJewels = true;
         }
 
         public override void Update(GameTime gameTime)

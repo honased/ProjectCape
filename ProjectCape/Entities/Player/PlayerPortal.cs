@@ -30,6 +30,7 @@ namespace ProjectCape.Entities.Player
             _renderer.CenterOrigin();
             _portal = portal;
             _gotoNextRoom = true;
+            Globals.AddToTotalJewels = true;
         }
 
         public override void Update(GameTime gameTime)

@@ -16,5 +16,9 @@ namespace ProjectCape
         public const uint TAG_PLAYER        = (0x1 << 4);
         public const uint TAG_PORTAL        = (0x1 << 5);
         public const uint TAG_ONE_WAY       = (0x1 << 6);
+
+        public static int CollectedJewels { get; set; } = 0;
+        public static int TotalJewels { get; set; } = 0;
+        public static bool AddToTotalJewels { get; set; } = false;
     }
 }

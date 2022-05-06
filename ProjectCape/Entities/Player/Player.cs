@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ProjectCape.Entities.Environment;
 using ProjectCape.Entities.GUI;
 using ProjectCape.Particles;
 using System;
@@ -41,6 +42,15 @@ namespace ProjectCape.Entities.Player
             Camera.Position = _transform.Position;
             if (Scene.GetEntity<JewelCounter>(out var jc)) jc.Destroy();
             Scene.AddEntity(new JewelCounter(), "GUI");
+
+            if(Globals.AddToTotalJewels)
+            {
+                Globals.AddToTotalJewels = false;
+                foreach(Entity e in Scene.GetEntities())
+                {
+                    if (e is Jewel j) Globals.TotalJewels += 1;
+                }
+            }
         }
 
         public override void Update(GameTime gameTime)
