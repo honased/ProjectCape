@@ -30,7 +30,7 @@ namespace ProjectCape.Entities.Menus
         public override void Update(GameTime gameTime)
         {
             var right = Input.IsKeyPressed(Keys.D) || Input.IsKeyPressed(Keys.Right) || Input.IsButtonPressed(Buttons.DPadRight) || Input.CheckAnalogPressed(true, true, 1);
-            var left = Input.IsKeyPressed(Keys.A) || Input.IsKeyPressed(Keys.LeftShift) || Input.IsButtonPressed(Buttons.DPadLeft) || Input.CheckAnalogPressed(true, true, -1);
+            var left = Input.IsKeyPressed(Keys.A) || Input.IsKeyPressed(Keys.Left) || Input.IsKeyPressed(Keys.LeftShift) || Input.IsButtonPressed(Buttons.DPadLeft) || Input.CheckAnalogPressed(true, true, -1);
             var select = Input.IsKeyPressed(Keys.Space) || Input.IsKeyPressed(Keys.Enter) || Input.IsButtonPressed(Buttons.A);
 
             if (right) _startSelected = false;

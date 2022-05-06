@@ -74,6 +74,8 @@ namespace ProjectCape
             AssetLibrary.AddAsset("room_0_1", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_1.json") as JObject));
             AssetLibrary.AddAsset("room_0_2", new TiledMap(JSON.FromFile("Content/maps/rooms/room_0_2.json") as JObject));
             AssetLibrary.AddAsset("room_menu", new TiledMap(JSON.FromFile("Content/maps/rooms/room_menu.json") as JObject));
+            AssetLibrary.AddAsset("room_intro", new TiledMap(JSON.FromFile("Content/maps/rooms/room_intro.json") as JObject));
+            AssetLibrary.AddAsset("room_inbetween", new TiledMap(JSON.FromFile("Content/maps/rooms/room_inbetween.json") as JObject));
 
             // Music
             AssetLibrary.AddAsset("musMenu", Content.Load<Song>("sfx/musMenu"));
@@ -128,11 +130,14 @@ namespace ProjectCape
             TiledManager.AddSpawnerDefinition("Jewel", obj => { return new Jewel(obj.X, obj.Y); });
             TiledManager.AddSpawnerDefinition("Portal", obj => { return new Portal(obj.X, obj.Y); });
             TiledManager.AddSpawnerDefinition("Menu", obj => { return new Menu(); });
+            TiledManager.AddSpawnerDefinition("Intro", obj => { return new Intro(); });
+            TiledManager.AddSpawnerDefinition("JewelDeposit", obj => { return new JewelDeposit(); });
 
             Scene.AddParticleSystem(new Dust());
             Scene.AddParticleSystem(new Blood());
 
             RoomManager.Goto("room_menu");
+            SongManager.MasterVolume = 0.0f;
             SongManager.PlaySong(AssetLibrary.GetAsset<Song>("musMenu"));
         }
 
@@ -169,8 +174,8 @@ namespace ProjectCape
 
             _watch.Stop();
             _spriteBatch.Begin();
-            _spriteBatch.DrawFilledRectangle(new Rectangle(8, 8, 48, 16), Color.Black);
-            _spriteBatch.DrawString(AssetLibrary.GetAsset<SpriteFont>("fntText"), $"{(1000000000.0 * (double)_watch.ElapsedTicks / Stopwatch.Frequency) / 1000000.0}", new Vector2(10, 10), Color.Yellow);
+            //_spriteBatch.DrawFilledRectangle(new Rectangle(8, 8, 48, 16), Color.Black);
+            //_spriteBatch.DrawString(AssetLibrary.GetAsset<SpriteFont>("fntText"), $"{(1000000000.0 * (double)_watch.ElapsedTicks / Stopwatch.Frequency) / 1000000.0}", new Vector2(10, 10), Color.Yellow);
             _spriteBatch.End();
 
             base.Draw(gameTime);

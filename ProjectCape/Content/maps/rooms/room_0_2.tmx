@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="100" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="121">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="100" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="121">
  <editorsettings>
   <export target="room_0_2.json" format="json"/>
  </editorsettings>
@@ -116,4 +116,5 @@
  <objectgroup id="3" name="Player">
   <object id="4" template="../objects/Player.tx" x="16" y="222"/>
  </objectgroup>
+ <objectgroup id="8" name="GUI"/>
 </map>

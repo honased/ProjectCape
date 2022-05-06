@@ -690,8 +690,19 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":9,
+         "name":"GUI",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":9,
+ "nextlayerid":10,
  "nextobjectid":167,
  "orientation":"orthogonal",
  "renderorder":"right-down",

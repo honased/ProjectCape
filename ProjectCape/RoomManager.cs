@@ -9,7 +9,7 @@ namespace ProjectCape
 {
     public static class RoomManager
     {
-        private static string[] _levels = new string[] { "room_menu", "room_0_0", "room_0_1", "room_0_2" };
+        private static string[] _levels = new string[] { "room_menu", "room_0_0", "room_inbetween", "room_0_1", "room_inbetween", "room_0_2", "room_inbetween" };
 
         public static int CurrentLevel { get; private set; } = 0;
 

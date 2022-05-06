@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ProjectCape.Entities.GUI;
 using ProjectCape.Particles;
 using System;
 
@@ -37,6 +38,9 @@ namespace ProjectCape.Entities.Player
             _velocity = new Velocity2D();
             _jmpTimer = 0.0;
             _coyoteTimer = 0.0;
+            Camera.Position = _transform.Position;
+            if (Scene.GetEntity<JewelCounter>(out var jc)) jc.Destroy();
+            Scene.AddEntity(new JewelCounter(), "GUI");
         }
 
         public override void Update(GameTime gameTime)
@@ -59,9 +63,8 @@ namespace ProjectCape.Entities.Player
                 {
                     if((eCollider.Tag & Globals.TAG_ONE_WAY) > 0)
                     {
-                        var down = Input.IsKeyDown(Keys.S) || Input.IsKeyDown(Keys.Down) || Input.IsButtonDown(Buttons.DPadDown) || Input.CheckAnalogDirection(true, false, 1);
-                        var jump = Input.IsKeyDown(Keys.Space) || Input.IsButtonDown(Buttons.A);
-                        if (down && jump)
+                        var down = Input.IsKeyPressed(Keys.S) || Input.IsKeyPressed(Keys.Down) || Input.IsButtonPressed(Buttons.DPadDown) || Input.CheckAnalogPressed(true, false, 1);
+                        if (down)
                         {
                             onGround = false;
                             _coyoteTimer = 0.0f;
@@ -152,6 +155,7 @@ namespace ProjectCape.Entities.Player
             {
                 e.Destroy();
                 AssetLibrary.GetAsset<SoundEffect>("sndJewel").Play();
+                if (Scene.GetEntity<JewelCounter>(out var jc)) jc.AddJewel();
             }
             else if((collideTag & Globals.TAG_PORTAL) > 0)
             {
@@ -176,7 +180,8 @@ namespace ProjectCape.Entities.Player
             }
             else _renderer.Animation = "idle";
 
-            Camera.Position = HonasMathHelper.LerpDelta(Camera.Position, _transform.Position - new Vector2(Camera.CameraSize.X / 2.0f, Camera.CameraSize.Y / 1.8f) + camOffset, 1.0f, gameTime);
+            Camera.Position = HonasMathHelper.LerpDelta(Camera.Position, _transform.Position - new Vector2(Camera.CameraSize.X / 2.0f, Camera.CameraSize.Y / 1.8f) + camOffset, 0.2f, gameTime);
+            Camera.Position = new Vector2(MathF.Round(Camera.Position.X), MathF.Round(Camera.Position.Y));
 
             if(_transform.Position.Y - 24.0f > Camera.Bounds.Height)
             {

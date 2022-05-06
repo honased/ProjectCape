@@ -1,6 +1,7 @@
 ﻿using HonasGame;
 using HonasGame.Assets;
 using HonasGame.ECS;
+using HonasGame.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -28,6 +29,11 @@ namespace ProjectCape.Entities.GUI
             _count += 1;
         }
 
+        public int GetJewelCount()
+        {
+            return _count;
+        }
+
         public override void Update(GameTime gameTime)
         {
             if (RoomManager.CurrentLevel == 0) Destroy();
@@ -37,7 +43,9 @@ namespace ProjectCape.Entities.GUI
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(_font, "Hello", Camera.Position, Color.White);
+            spriteBatch.Draw(_jewelTex, Camera.Position, Color.White);
+            spriteBatch.DrawFilledRectangle(new Rectangle((int)Camera.Position.X + 12, (int)Camera.Position.Y + 3, 24, 10), Color.Black);
+            spriteBatch.DrawString(_font, $"x{_count}", Camera.Position + Vector2.UnitX * 12, Color.White);
 
             base.Draw(gameTime, spriteBatch);
         }
