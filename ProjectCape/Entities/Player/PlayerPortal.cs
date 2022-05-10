@@ -49,8 +49,6 @@ namespace ProjectCape.Entities.Player
             {
                 Scene.AddEntity(new RoomTransition(true));
                 _gotoNextRoom = false;
-
-                if (RoomManager.CurrentLevel == 3) SongManager.TransitionSong(AssetLibrary.GetAsset<Song>("musMenu"), 0.5, false);
             }
 
             base.Update(gameTime);

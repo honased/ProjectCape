@@ -2,9 +2,12 @@
 using HonasGame.Assets;
 using HonasGame.ECS;
 using HonasGame.ECS.Components;
+using HonasGame.Helper;
 using HonasGame.Rendering;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +31,7 @@ namespace ProjectCape.Entities.Menus
             timer = TEXT_TIMER;
             var routine = new Coroutine(this, Routine());
             routine.Start();
+            SongManager.TransitionSong(AssetLibrary.GetAsset<Song>("musVoices"), 0.5, true);
         }
 
         private IEnumerator<double> Routine()
@@ -56,6 +60,7 @@ namespace ProjectCape.Entities.Menus
             yield return 4.0;
             _textIndex = 0;
             _text = "";
+            SongManager.FadeSong(2.5);
             yield return 3.0;
             Scene.AddEntity(new RoomTransition(true));
         }
@@ -64,7 +69,16 @@ namespace ProjectCape.Entities.Menus
         {
             if (timer <= 0)
             {
-                if (_textIndex < _text.Length) _textIndex += 1;
+                if (_textIndex < _text.Length)
+                {
+                    _textIndex += 1;
+                    if (_textIndex % 2 == 1)
+                    {
+                        var inst = AssetLibrary.GetAsset<SoundEffect>("sndTalk").CreateInstance();
+                        inst.Pitch = RandomHelper.NextFloat(-0.2f, 0.4f);
+                        inst.Play();
+                    }
+                }
                 timer = TEXT_TIMER;
             }
             else timer -= gameTime.ElapsedGameTime.TotalSeconds;

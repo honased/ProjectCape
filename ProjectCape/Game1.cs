@@ -77,10 +77,12 @@ namespace ProjectCape
             AssetLibrary.AddAsset("room_intro", new TiledMap(JSON.FromFile("Content/maps/rooms/room_intro.json") as JObject));
             AssetLibrary.AddAsset("room_outro", new TiledMap(JSON.FromFile("Content/maps/rooms/room_outro.json") as JObject));
             AssetLibrary.AddAsset("room_inbetween", new TiledMap(JSON.FromFile("Content/maps/rooms/room_inbetween.json") as JObject));
+            AssetLibrary.AddAsset("room_madeby", new TiledMap(JSON.FromFile("Content/maps/rooms/room_madeby.json") as JObject));
 
             // Music
             AssetLibrary.AddAsset("musMenu", Content.Load<Song>("sfx/musMenu"));
             AssetLibrary.AddAsset("musForest", Content.Load<Song>("sfx/musForest"));
+            AssetLibrary.AddAsset("musVoices", Content.Load<Song>("sfx/musVoices"));
 
             // SFX
             AssetLibrary.AddAsset("sndJump", Content.Load<SoundEffect>("sfx/sndJump"));
@@ -88,6 +90,9 @@ namespace ProjectCape
             AssetLibrary.AddAsset("sndKill", Content.Load<SoundEffect>("sfx/sndKill"));
             AssetLibrary.AddAsset("sndPortal", Content.Load<SoundEffect>("sfx/sndPortal"));
             AssetLibrary.AddAsset("sndDeath", Content.Load<SoundEffect>("sfx/sndDeath"));
+            AssetLibrary.AddAsset("sndTalk", Content.Load<SoundEffect>("sfx/sndTalk"));
+            AssetLibrary.AddAsset("sndAlien1", Content.Load<SoundEffect>("sfx/sndAlien1"));
+            AssetLibrary.AddAsset("sndAlien2", Content.Load<SoundEffect>("sfx/sndAlien2"));
 
             // Fonts
             AssetLibrary.AddAsset("fntText", Content.Load<SpriteFont>("fonts/fntText"));
@@ -133,14 +138,13 @@ namespace ProjectCape
             TiledManager.AddSpawnerDefinition("Menu", obj => { return new Menu(); });
             TiledManager.AddSpawnerDefinition("Intro", obj => { return new Intro(); });
             TiledManager.AddSpawnerDefinition("Outro", obj => { return new Outro(); });
+            TiledManager.AddSpawnerDefinition("MadeBy", obj => { return new MadeBy(); });
             TiledManager.AddSpawnerDefinition("JewelDeposit", obj => { return new JewelDeposit(); });
 
             Scene.AddParticleSystem(new Dust());
             Scene.AddParticleSystem(new Blood());
 
-            RoomManager.Goto("room_menu");
-            SongManager.MasterVolume = 0.0f;
-            SongManager.PlaySong(AssetLibrary.GetAsset<Song>("musMenu"));
+            RoomManager.Goto("room_madeby");
         }
 
         protected override void Update(GameTime gameTime)

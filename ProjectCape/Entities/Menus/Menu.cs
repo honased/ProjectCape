@@ -21,13 +21,15 @@ namespace ProjectCape.Entities.Menus
 
         public Menu()
         {
-            Camera.Position = new Vector2(0, 0);
+            Camera.Position = new Vector2(100, 0);
+            Camera.Bounds = new Rectangle(0, 0, 600, 10);
 
             _font = AssetLibrary.GetAsset<SpriteFont>("fntText");
             _startSelected = true;
             Globals.CollectedJewels = 0;
             Globals.TotalJewels = 0;
             Globals.AddToTotalJewels = true;
+            SongManager.PlaySong(AssetLibrary.GetAsset<Song>("musMenu"));
         }
 
         public override void Update(GameTime gameTime)
@@ -45,10 +47,11 @@ namespace ProjectCape.Entities.Menus
                 {
                     Scene.AddEntity(new RoomTransition(true));
                     Enabled = false;
-                    SongManager.TransitionSong(AssetLibrary.GetAsset<Song>("musForest"), 0.5, true);
                 }
                 else Quit = true;
             }
+
+            Camera.Position = new Vector2(100, 0) + Vector2.UnitX * (MathF.Sin((float)gameTime.TotalGameTime.TotalSeconds / 4.0f) * 100);
 
             base.Update(gameTime);
         }
@@ -58,13 +61,14 @@ namespace ProjectCape.Entities.Menus
             float t = (float)gameTime.TotalGameTime.TotalSeconds;
 
             Vector2 origin = _font.MeasureString("Start") / 2.0f;
+            var cx = Camera.Position.X;
             //var rect = new Rectangle((int)((Camera.CameraSize.X / 2.0f) - origin.X - 5), (int)((Camera.CameraSize.Y / 2.0f) - origin.Y), (int)(origin.X * 2) + 10, (int)(origin.Y * 2));
             //spriteBatch.DrawFilledRectangle(rect, Color.Black);
-            spriteBatch.DrawString(_font, "Start", new Vector2(Camera.CameraSize.X / 3.0f, Camera.CameraSize.Y - 18.0f), _startSelected ? Color.Yellow : Color.Black, 0.0f, origin, 2.0f, SpriteEffects.None, 0.0f);
-            spriteBatch.DrawString(_font, "Quit", new Vector2(Camera.CameraSize.X / 3.0f * 2, Camera.CameraSize.Y - 18.0f), _startSelected ? Color.Black : Color.Yellow, 0.0f, origin, 2.0f, SpriteEffects.None, 0.0f);
+            spriteBatch.DrawString(_font, "Start", new Vector2(cx + Camera.CameraSize.X / 3.0f, Camera.CameraSize.Y - 18.0f), _startSelected ? Color.Yellow : Color.Black, 0.0f, origin, 2.0f, SpriteEffects.None, 0.0f);
+            spriteBatch.DrawString(_font, "Quit", new Vector2(cx + Camera.CameraSize.X / 3.0f * 2, Camera.CameraSize.Y - 18.0f), _startSelected ? Color.Black : Color.Yellow, 0.0f, origin, 2.0f, SpriteEffects.None, 0.0f);
 
             origin = _font.MeasureString("Forgotten Wisp") / 2.0f;
-            Vector2 pos = new Vector2(Camera.CameraSize.X / 2.0f, Camera.CameraSize.Y / 3.0f) + (Vector2.UnitY * (MathF.Sin(t) * 7.0f));
+            Vector2 pos = new Vector2(cx + Camera.CameraSize.X / 2.0f, Camera.CameraSize.Y / 3.0f) + (Vector2.UnitY * (MathF.Sin(t) * 7.0f));
             spriteBatch.DrawString(_font, "Forgotten Wisp", pos + Vector2.UnitX, Color.Black, 0.0f, origin, 2.0f, SpriteEffects.None, 0.0f);
             spriteBatch.DrawString(_font, "Forgotten Wisp", pos - Vector2.UnitX, Color.Black, 0.0f, origin, 2.0f, SpriteEffects.None, 0.0f);
             spriteBatch.DrawString(_font, "Forgotten Wisp", pos + Vector2.UnitY, Color.Black, 0.0f, origin, 2.0f, SpriteEffects.None, 0.0f);

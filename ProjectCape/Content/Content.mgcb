@@ -44,6 +44,24 @@
 /processorParam:Quality=Best
 /build:sfx/musMenu.wav
 
+#begin sfx/musVoices.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sfx/musVoices.wav
+
+#begin sfx/sndAlien1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/sndAlien1.wav
+
+#begin sfx/sndAlien2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/sndAlien2.wav
+
 #begin sfx/sndDeath.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -73,6 +91,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sfx/sndPortal.wav
+
+#begin sfx/sndTalk.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/sndTalk.wav
 
 #begin sprites/bg/bushes.png
 /importer:TextureImporter

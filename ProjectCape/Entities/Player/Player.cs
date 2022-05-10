@@ -73,8 +73,9 @@ namespace ProjectCape.Entities.Player
                 {
                     if((eCollider.Tag & Globals.TAG_ONE_WAY) > 0)
                     {
-                        var down = Input.IsKeyPressed(Keys.S) || Input.IsKeyPressed(Keys.Down) || Input.IsButtonPressed(Buttons.DPadDown) || Input.CheckAnalogPressed(true, false, 1);
-                        if (down)
+                        var down = Input.IsKeyDown(Keys.S) || Input.IsKeyDown(Keys.Down) || Input.IsButtonDown(Buttons.DPadDown) || Input.CheckAnalogDirection(true, false, 1);
+                        var jump = Input.IsKeyPressed(Keys.Space) || Input.IsButtonPressed(Buttons.A);
+                        if (down && jump)
                         {
                             onGround = false;
                             _coyoteTimer = 0.0f;
