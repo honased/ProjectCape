@@ -152,11 +152,6 @@ namespace ProjectCape
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if(Input.IsKeyPressed(Keys.R))
-            {
-                RoomManager.GotoLevel();
-            }
-
             // TODO: Add your update logic here
             Scene.Update(gameTime);
             SongManager.Update(gameTime);

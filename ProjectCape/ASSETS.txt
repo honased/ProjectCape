@@ -24,6 +24,12 @@ Content/sfx/musForest.wav - created by Eric Honas for this game, released under 
 
 Content/sfx/musMenu.wav - created by Eric Honas for this game, released under public domain
 
+Content/sfx/musVoices.wav - created by Eric Honas for this game, released under public domain
+
+Content/sfx/sndAlien1.wav - created by Eric Honas for this game, released under public domain
+
+Content/sfx/sndAlien2.wav - created by Eric Honas for this game, released under public domain
+
 Content/sfx/sndDeath.wav - created by Eric Honas for this game, released under public domain
 
 Content/sfx/sndJewel.wav - created by Eric Honas for this game, released under public domain
@@ -33,5 +39,7 @@ Content/sfx/sndJump.wav - created by Eric Honas for this game, released under pu
 Content/sfx/sndKill.wav - created by Eric Honas for this game, released under public domain
 
 Content/sfx/sndPortal.wav - created by Eric Honas for this game, released under public domain
+
+Content/sfx/sndTalk.wav - created by Eric Honas for this game, released under public domain
 
 Content/PX Garamond/PX Garamond Regular.ttf - PX Garamond Regular font created by Tristan Dannenberg, released on Github (https://github.com/teryror/pixel-fonts) under the Open Font License
